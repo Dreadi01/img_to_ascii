@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 import main
 
 # Create a blank image with white background
-image_width = 1000
+image_width = 1200
 image_height = 1000
 background_color = (255, 255, 255)  # white
 image = Image.new("RGB", (image_width, image_height), background_color)
@@ -10,7 +10,7 @@ image = Image.new("RGB", (image_width, image_height), background_color)
 # Initialize drawing context
 draw = ImageDraw.Draw(image)
 
-text = main.return_text("imgs/mqdefault.jpg", 100)
+text = main.return_text("imgs/maxresdefault.jpg", 100)
 text_color = (0, 0, 0)  # black
 font = ImageFont.truetype("arial.ttf", 10)
 text_position = (0, 0)

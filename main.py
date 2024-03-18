@@ -43,7 +43,8 @@ def generate_char_pic(img):
              '*',
              'M', '#', 'W', '&', '8', '%', 'B', '@', '$'
              ]
-    chars = chars[:20]
+    chars = [" "+char+" " for char in chars]
+    # chars = chars[:20]
     chars.reverse()
 
     detail_num = 256 / len(chars)
