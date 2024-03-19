@@ -21,7 +21,7 @@ def pixelate_image(image_path, output_path, pixel_size):
     height, width = image.shape[:2]
 
     # Resize the image to a smaller size
-    small_image = cv2.resize(image, (pixel_size, pixel_size), interpolation=cv2.INTER_NEAREST)
+    small_image = cv2.resize(image, (height, width) * pixel_size, interpolation=cv2.INTER_NEAREST)
 
     for row_num, row in enumerate(small_image):
         for pixel_num, pixel in enumerate(row):
@@ -36,15 +36,15 @@ def pixelate_image(image_path, output_path, pixel_size):
 
 
 def generate_char_pic(img):
-    chars = ['. ', "' ", '` ', '^ ', '""', '! ', '; ', ': ', 'I', 'l', '! ', 'i ', '< ', '>', '~', '+', '_ ',
-             '-', '=', '?', '[', ']', '{', '}', '1', ')', '(', '|', '/', 'f', 't', 'j', 'r', 'x', 'n', 'u', 'c', 'v',
+    chars = ['.', "' ", '` ', '^ ', '""', '! ', '; ', ': ', 'I', 'l', '! ', 'i ', ' ', '>', '~', '+', '_ ',
+             '-', '=', '?', '[', ']', '{', '}', '1', ')', '(', '|', '/ ', 'f', 't', 'j', 'r', 'x', 'n', 'u', 'c', 'v',
              'z',
              'X', 'Y', 'U', 'J', 'C', 'L', 'Q', '0', 'O', 'Z', 'm', 'w', 'q', 'p', 'd', 'b', 'k', 'h', 'a', 'o', 'o',
              '*',
              'M', '#', 'W', '&', '8', '%', 'B', '@', '$'
              ]
-    chars = [" "+char+" " for char in chars]
-    # chars = chars[:20]
+    chars = [" "+char+"  " for char in chars]
+    chars = chars[:30]
     chars.reverse()
 
     detail_num = 256 / len(chars)
@@ -74,5 +74,4 @@ def return_text(path, pixels):
     img_pixels = pixelate_image(path,
                                 "pixelated/pixelated.png",
                                 pixels)
-
     return generate_char_pic(img_pixels)
